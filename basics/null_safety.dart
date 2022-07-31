@@ -1,5 +1,5 @@
 main() {
-  int area = 10;
+  int area;
 
   int? area1;
 
