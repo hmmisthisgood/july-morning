@@ -1,6 +1,6 @@
 main() {
   /// implicit declaration and definition of list
-  var students = ["jeff", "jack", "jessica"];
+  List<String> students = ["jeff", "jack", "jessica"];
 
   /// explicit definition of list, but dynamic
   List values = [];
@@ -26,8 +26,10 @@ main() {
 
   // Map
   Map<String, dynamic> person = {
-    "profilePicture": "https://a.jpg",
+    "profilePicture": "https://a.jpg", // MapEntry
+
     "age": 111,
+
     "name": "Ram",
     "1": 1,
     "1000.0": "this is value"
@@ -36,4 +38,24 @@ main() {
   final name = person["name"];
   final pp = person["profilePicture"];
   person["address"] = "kathmandu";
+
+  /// Map = data type
+  //// map function available in both List , Set & Map
+
+  // map function in a Map person
+  person.map(
+    (key, value) {
+      print("Key is : $key & value is $value");
+      return MapEntry(key, value);
+    },
+  );
+
+  /// map function in a List students
+  final modifiedStundents = students.map(
+    (item) {
+      var temp = "My name is $item";
+      return temp;
+    },
+  ).toList();
+  print(modifiedStundents);
 }
