@@ -30,6 +30,21 @@ class User {
 
   /// methods/functions
 
+  /// getter and setter
+
+  String getPassword() {
+    return _password;
+  }
+
+  void setPassword(String newValue) {
+    _password = newValue;
+  }
+
+  //  dart syntax for getter. retursns _password.
+  String get password => _password;
+
+  set password(String newValue) => _password = newValue;
+
   login() {
     print("$username has logged in");
     print(age);
@@ -67,6 +82,5 @@ main() {
   // User mary = User();
 }
 
-
-/// create a class MobilePhone , add its properties, 
+/// create a class MobilePhone , add its properties,
 /// create 3 phones, iphone13, note20, oneplusNord
