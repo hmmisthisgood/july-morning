@@ -1,3 +1,4 @@
+import 'package:first_app/screen/row_column.dart';
 import 'package:flutter/material.dart';
 import 'screen/homepage.dart';
 
@@ -12,7 +13,7 @@ class OurApp extends StatelessWidget {
     /// MaterialApp: only one in the whole app
     return MaterialApp(
       title: "Our app",
-      home: Homepage(),
+      home: RowColumnScreen(),
     );
   }
 }
