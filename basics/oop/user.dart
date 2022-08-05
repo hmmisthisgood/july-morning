@@ -60,15 +60,17 @@ class User {
 // encapsulation
 
 main() {
-  User ram = User(
+  final ram = User(
       age: 11,
-      username: "iamRamey",
       userType: "admin",
+      username: "iamRamey",
       bio: "this",
       pass: "strongpassword"); // defualt constructor
 
   ram.username = "iamNotRamey";
+
   ram.login();
+
   // ram.logout();
 
   User jack = User(

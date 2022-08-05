@@ -1,26 +1,28 @@
 abstract class User {
-  login();
+  login(String email);
   logout();
 }
 
 class Admin extends User {
   @override
-  login() {}
+  logout() {}
 
   @override
-  logout() {}
+  login(String email) {}
 }
 
 class Customer extends User {
   @override
-  login() {}
-
   @override
   logout() {}
+
+  @override
+  login(String email) {}
 }
 
 void main(List<String> args) {
   var admin = Admin();
+
   bool isAdminUser = admin is User;
   var client = Customer();
   bool isCustomerUser = client is User;
