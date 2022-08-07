@@ -21,27 +21,47 @@ class RowColumnScreen extends StatelessWidget {
         ),
       )),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          IgPost(),
+          // IgPost(),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Container(height: 100, color: Colors.green, width: 100),
+              Container(height: 100, color: Colors.green, width: 180),
               Container(height: 100, color: Colors.red, width: 100),
               Container(height: 100, color: Colors.purple, width: 100),
             ],
           ),
-          Container(height: 100, color: Colors.green),
+          Row(
+            children: [
+              Flexible(
+                // flex: 10,1
+                child: Container(
+                  height: 100,
+                  color: Colors.green,
+                  child: Text("What happened with projector"),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(height: 100, color: Colors.orange),
+              ),
+            ],
+          ),
           Container(height: 100, color: Colors.red),
           Container(height: 100, color: Colors.purple),
         ],
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
       ),
     );
   }
 }
+
+
+
+// Expanded  = tries to occupy as much space as possible/available
+// Flexible = just uses space that is necesary for it
 
 
 
