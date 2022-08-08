@@ -4,6 +4,10 @@ class IgPost extends StatelessWidget {
   final String imageSrc =
       "https://cdn.pixabay.com/photo/2022/06/27/08/37/monk-7287041_960_720.jpg";
 
+  Map postData;
+
+  IgPost({required this.postData});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +22,7 @@ class IgPost extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(50),
                     child: Image.network(
-                      imageSrc,
+                      postData["profilePicture"],
                       height: 50,
                       width: 50,
                       fit: BoxFit.cover,
@@ -26,7 +30,7 @@ class IgPost extends StatelessWidget {
                   ),
                   SizedBox(width: 15),
                   Text(
-                    "IamUser",
+                    postData['username'],
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ],
@@ -36,7 +40,8 @@ class IgPost extends StatelessWidget {
           ),
         ),
         Image.network(
-          imageSrc,
+          postData["postUrl"],
+
           height: 200,
           // width: ,
         ),

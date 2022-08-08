@@ -80,7 +80,10 @@ class ListviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: listViewBuilder());
+    return Scaffold(
+        body: SafeArea(
+      child: listViewBuilder(),
+    ));
   }
 }
 
@@ -90,3 +93,6 @@ class ListviewScreen extends StatelessWidget {
 /// 3. GridView: GridView.builder, Gridview.count
 /// 4. PageView: PageView.builder
 /// 5. CustomScrollView, NestedScrollView (not covered in this course)
+
+
+// SafeArea
