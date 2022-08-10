@@ -1,8 +1,6 @@
-import 'package:first_app/screen/row_column.dart';
 import 'package:flutter/material.dart';
-import 'screen/followers_screen.dart';
-import 'screen/homepage.dart';
-import 'screen/list_view_screen.dart';
+
+import 'screen/misc_widgets.dart';
 
 /// only one in a flutter project
 void main() {
@@ -15,7 +13,7 @@ class OurApp extends StatelessWidget {
     /// MaterialApp: only one in the whole app
     return MaterialApp(
       title: "Our app",
-      home: FollowersScreen(),
+      home: MiscWidgets(),
     );
   }
 }
