@@ -1,6 +1,5 @@
+import 'package:first_app/screen/basics_widgets/misc_widgets.dart';
 import 'package:flutter/material.dart';
-
-import 'screen/misc_widgets.dart';
 
 /// only one in a flutter project
 void main() {

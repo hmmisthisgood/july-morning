@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../util/constants.dart';
+import '../../util/constants.dart';
 
 class StackScreen extends StatelessWidget {
   const StackScreen({super.key});
