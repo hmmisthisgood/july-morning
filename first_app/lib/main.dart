@@ -1,5 +1,6 @@
-import 'package:first_app/screen/basics_widgets/misc_widgets.dart';
 import 'package:flutter/material.dart';
+
+import 'screen/stful/basic_stateful_screen.dart';
 
 /// only one in a flutter project
 void main() {
@@ -12,7 +13,7 @@ class OurApp extends StatelessWidget {
     /// MaterialApp: only one in the whole app
     return MaterialApp(
       title: "Our app",
-      home: MiscWidgets(),
+      home: CounterScreen(),
     );
   }
 }
