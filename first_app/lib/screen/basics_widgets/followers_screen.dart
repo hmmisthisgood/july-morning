@@ -24,6 +24,7 @@ class FollowersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("build followers");
     return Scaffold(
       appBar: AppBar(
         title: Text("some_guy"),
