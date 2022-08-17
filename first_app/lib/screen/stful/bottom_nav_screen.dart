@@ -20,10 +20,10 @@ class DashboardScreenState extends State<DashboardScreen> {
   int _currentIndex = 0;
   final iconsList = [Icons.home, Icons.search, Icons.settings, Icons.person];
   final pageList = [
-    FormScreen(),
     GridViewScreen(),
     ListviewScreen(),
-    StackScreen()
+    FormScreen(),
+    StackScreen(),
   ];
   final PageController pageController = PageController();
   @override

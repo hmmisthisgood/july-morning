@@ -1,3 +1,4 @@
+import 'package:first_app/screen/stful/form_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screen/basics_widgets/navigator_screen.dart';
@@ -15,7 +16,7 @@ class OurApp extends StatelessWidget {
     return MaterialApp(
       title: "Our app",
       theme: ThemeData(primarySwatch: Colors.purple),
-      home: NaivgatorScreen(),
+      home: FormScreen(),
       onGenerateRoute: ourRouteGenerator,
     );
   }

@@ -21,7 +21,11 @@ class NaivgatorScreen extends StatelessWidget {
   NaivgatorScreen({Key? key}) : super(key: key);
 
   final List screensList = [
-    {"name": "Homepage", "widget": Homepage()},
+    {
+      "name": "Homepage",
+      "widget": Homepage(),
+      "route": Routes.homepage,
+    },
     {"name": "Followers", "widget": FollowersScreen()},
     {"name": "Gridview", "widget": GridViewScreen()},
     {"name": "Listview", "widget": ListviewScreen()},
@@ -57,7 +61,7 @@ class NaivgatorScreen extends StatelessWidget {
               //     MaterialPageRoute(builder: (con) => screen["widget"]);
               // Navigator.push(context, route);
 
-              Navigator.pushNamed(context, Routes.counter);
+              Navigator.pushNamed(context, screen["route"]);
             },
             color: Color.fromRGBO(Random().nextInt(255), Random().nextInt(255),
                 Random().nextInt(255), 1),

@@ -2,6 +2,7 @@ import 'package:first_app/screen/stful/bottom_nav_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
+import '../../navigation/routes.dart';
 import '../../widget/common_textfield.dart';
 
 class FormScreen extends StatefulWidget {
@@ -37,7 +38,7 @@ class _FormScreenState extends State<FormScreen> {
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
-                autofocus: true,
+                autofocus: false,
                 onChanged: (val) {
                   print(val);
                 },
@@ -158,8 +159,20 @@ class _FormScreenState extends State<FormScreen> {
                       /// login logic
                     }
 
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (c) => DashboardScreen()));
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (c) => DashboardScreen()));
+
+                    /// Push replacement:
+                    // Navigator.pushReplacement(context,
+                    //     MaterialPageRoute(builder: (c) => DashboardScreen()));
+
+                    Navigator.pushReplacementNamed(context, Routes.dashboard);
+
+                    /// push and remove until
+                    // Navigator.pushAndRemoveUntil(
+                    //     context,
+                    //     MaterialPageRoute(builder: (c) => DashboardScreen()),
+                    //     (route) => false);
                   }
                 },
                 child: Text(
