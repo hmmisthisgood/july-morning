@@ -1,8 +1,7 @@
-import 'package:first_app/screen/stful/tabview.dart';
 import 'package:flutter/material.dart';
 
-import 'screen/stful/basic_stateful_screen.dart';
-import 'screen/stful/bottom_nav_screen.dart';
+import 'screen/basics_widgets/navigator_screen.dart';
+import 'navigation/custom_route_generator.dart';
 
 /// only one in a flutter project
 void main() {
@@ -15,10 +14,9 @@ class OurApp extends StatelessWidget {
     /// MaterialApp: only one in the whole app
     return MaterialApp(
       title: "Our app",
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
-      home: DashboardScreen(),
+      theme: ThemeData(primarySwatch: Colors.purple),
+      home: NaivgatorScreen(),
+      onGenerateRoute: ourRouteGenerator,
     );
   }
 }
