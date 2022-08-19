@@ -1,7 +1,6 @@
 import 'package:first_app/screen/stful/form_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'screen/basics_widgets/navigator_screen.dart';
 import 'navigation/custom_route_generator.dart';
 
 /// only one in a flutter project
@@ -16,7 +15,9 @@ class OurApp extends StatelessWidget {
     return MaterialApp(
       title: "Our app",
       theme: ThemeData(primarySwatch: Colors.purple),
-      home: FormScreen(),
+      home: FormScreen(
+        pageTitle: "Not login",
+      ),
       onGenerateRoute: ourRouteGenerator,
     );
   }

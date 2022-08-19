@@ -1,7 +1,9 @@
+import 'package:first_app/navigation/routes.dart';
 import 'package:flutter/material.dart';
 
 class GridViewScreen extends StatelessWidget {
-  GridViewScreen({Key? key}) : super(key: key);
+  GridViewScreen({Key? key, this.iconsCount = 10}) : super(key: key);
+  int iconsCount;
 
   List<Map> apps = [
     {"icon": Icons.camera_alt, "name": "Camera", "color": Colors.orange},
@@ -44,7 +46,7 @@ class GridViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       body: GridView.builder(
         padding: EdgeInsets.all(10),
         scrollDirection: Axis.vertical,
@@ -65,29 +67,34 @@ class GridViewScreen extends StatelessWidget {
         //   ///  in horizonatal gridview height= chidaspectRatio * width
         // ),
 
-        itemCount: apps.length,
+        itemCount: iconsCount,
         itemBuilder: (context, index) {
           final app = apps[index];
 
-          return Container(
-            // color: Colors.grey,
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(40),
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(color: app["color"]),
-                    child: Icon(
-                      app['icon'],
-                      color: Colors.white,
+          return InkWell(
+            onTap: () {
+              final res = Navigator.pushNamed(context, Routes.followers);
+            },
+            child: Container(
+              // color: Colors.grey,
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(40),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(color: app["color"]),
+                      child: Icon(
+                        app['icon'],
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 15),
-                Text(app["name"]),
-              ],
+                  SizedBox(height: 15),
+                  Text(app["name"]),
+                ],
+              ),
             ),
           );
         },

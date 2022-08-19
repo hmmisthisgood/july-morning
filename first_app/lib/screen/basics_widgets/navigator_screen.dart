@@ -35,7 +35,7 @@ class NaivgatorScreen extends StatelessWidget {
     {"name": "STack", "widget": StackScreen()},
     {"name": "Tit tok skeleton", "widget": TkSkeleton()},
     {"name": "Counter", "widget": CounterScreen()},
-    {"name": "Dashboard", "widget": DashboardScreen()},
+    // {"name": "Dashboard", "widget": DashboardScreen()},
     {"name": "Login ", "widget": FormScreen()},
     {"name": "Tab", "widget": TabScreen()},
   ];

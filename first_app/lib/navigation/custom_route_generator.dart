@@ -37,10 +37,21 @@ Route ourRouteGenerator(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => TkSkeleton());
     case Routes.counter:
       return MaterialPageRoute(builder: (_) => CounterScreen());
+
     case Routes.dashboard:
-      return MaterialPageRoute(builder: (_) => DashboardScreen());
+      final args = settings.arguments as Map;
+
+      return MaterialPageRoute(
+          builder: (_) => DashboardScreen(
+                username: args['username'],
+              ));
+
     case Routes.login:
-      return MaterialPageRoute(builder: (_) => FormScreen());
+      return MaterialPageRoute(
+          builder: (_) => FormScreen(
+                pageTitle: "Not login",
+              ));
+
     case Routes.tabview:
       return MaterialPageRoute(builder: (_) => TabScreen());
 

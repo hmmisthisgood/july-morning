@@ -6,7 +6,8 @@ import '../../navigation/routes.dart';
 import '../../widget/common_textfield.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({Key? key}) : super(key: key);
+  const FormScreen({Key? key, this.pageTitle = "login"}) : super(key: key);
+  final String pageTitle;
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -23,7 +24,7 @@ class _FormScreenState extends State<FormScreen> {
   Widget build(BuildContext context) {
     print("build form");
     return Scaffold(
-      appBar: AppBar(title: Text("Login")),
+      appBar: AppBar(title: Text(widget.pageTitle)),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Form(
@@ -159,14 +160,26 @@ class _FormScreenState extends State<FormScreen> {
                       /// login logic
                     }
 
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (c) => DashboardScreen()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) =>
+                            DashboardScreen(username: "IAmGoodUser"),
+                      ),
+                    );
 
                     /// Push replacement:
                     // Navigator.pushReplacement(context,
                     //     MaterialPageRoute(builder: (c) => DashboardScreen()));
 
-                    Navigator.pushReplacementNamed(context, Routes.dashboard);
+                    Navigator.pushReplacementNamed(
+                      context,
+                      Routes.dashboard,
+                      arguments: {
+                        "username": "thisIsRamey",
+                        "seconArg": "some other stuff"
+                      },
+                    );
 
                     /// push and remove until
                     // Navigator.pushAndRemoveUntil(
