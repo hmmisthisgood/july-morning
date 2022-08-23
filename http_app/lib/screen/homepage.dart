@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+import '../model/post.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _HomepageState extends State<Homepage> {
   }
 
   String bodyText = "this is body";
-  List posts = [];
+  List<Post> posts = [];
 
   fetchDataFromServer() async {
     print("fetching data from server");
@@ -36,8 +36,20 @@ class _HomepageState extends State<Homepage> {
     response.then((res) {
       print(res.statusCode);
       bodyText = res.body;
+
       final List decoded = json.decode(res.body);
-      posts = decoded;
+
+      // posts = decoded;
+
+      posts = decoded
+          .map<Post>((item) => Post.convertJsonToPost(item)
+              //  {
+              //   final convertedItem = Post.convertJsonToPost(item);
+              //   return convertedItem;
+              // }
+              )
+          .toList();
+
       print("body text is-----------:$bodyText");
       setState(() {});
     });
@@ -77,7 +89,8 @@ class _HomepageState extends State<Homepage> {
           child: ListView.builder(
               itemCount: posts.length,
               itemBuilder: (context, index) {
-                final _post = posts[index];
+                final Post _post = posts[index];
+
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -89,12 +102,12 @@ class _HomepageState extends State<Homepage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "${index + 1}. " + _post["title"],
+                          "${index + 1}. " + _post.title,
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                         SizedBox(height: 10),
-                        Text(_post['body']),
+                        Text(_post.body),
                         // Divider()
                       ],
                     ),
