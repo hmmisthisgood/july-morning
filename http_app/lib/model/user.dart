@@ -29,7 +29,7 @@ class User {
   final String name, username, email, phone, website;
   Address address;
   final String companyName;
-
+  final imageUrl;
   User(
       {required this.id,
       required this.name,
@@ -38,7 +38,8 @@ class User {
       required this.phone,
       required this.website,
       required this.address,
-      required this.companyName});
+      required this.companyName,
+      this.imageUrl = "https://someimage"});
 
   static User convertJsonToUser(Map json) {
     return User(
