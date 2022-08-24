@@ -41,14 +41,13 @@ class _HomepageState extends State<Homepage> {
 
       // posts = decoded;
 
-      posts = decoded
-          .map<Post>((item) => Post.convertJsonToPost(item)
-              //  {
-              //   final convertedItem = Post.convertJsonToPost(item);
-              //   return convertedItem;
-              // }
-              )
-          .toList();
+      posts =
+          decoded.map<Post>((item) => Post.convertJsonToPost(item)).toList();
+
+      // posts = decoded.map<Post>((item) {
+      //   final convertedItem = Post.convertJsonToPost(item);
+      //   return convertedItem;
+      // }).toList();
 
       print("body text is-----------:$bodyText");
       setState(() {});
