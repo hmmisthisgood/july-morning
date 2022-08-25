@@ -4,6 +4,7 @@ import 'package:first_app/screen/basics_widgets/grid_view_screen.dart';
 import 'package:first_app/screen/basics_widgets/homepage.dart';
 import 'package:first_app/screen/basics_widgets/list_view_screen.dart';
 import 'package:first_app/screen/basics_widgets/misc_widgets.dart';
+import 'package:first_app/screen/basics_widgets/splash_screen.dart';
 import 'package:first_app/screen/stful/basic_stateful_screen.dart';
 import 'package:first_app/screen/stful/bottom_nav_screen.dart';
 import 'package:first_app/screen/stful/form_screen.dart';
@@ -16,6 +17,9 @@ import 'package:first_app/screen/basics_widgets/tik_tok_page_skeleton.dart';
 
 Route ourRouteGenerator(RouteSettings settings) {
   switch (settings.name) {
+    case Routes.splash:
+      return MaterialPageRoute(builder: (_) => SplashScreen());
+
     case Routes.homepage:
       return MaterialPageRoute(builder: (_) => Homepage());
     case Routes.followers:

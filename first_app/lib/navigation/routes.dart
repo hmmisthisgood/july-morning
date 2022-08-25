@@ -12,4 +12,5 @@ class Routes {
   static const login = "/login";
   static const tabview = "/tabview";
   static const homepage = "/homepage";
+  static const splash = "/splashScreen";
 }

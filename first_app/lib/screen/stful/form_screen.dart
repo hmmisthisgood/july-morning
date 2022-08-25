@@ -1,6 +1,8 @@
 import 'package:first_app/screen/stful/bottom_nav_screen.dart';
+import 'package:first_app/util/shared_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../navigation/routes.dart';
 import '../../widget/common_textfield.dart';
@@ -150,7 +152,7 @@ class _FormScreenState extends State<FormScreen> {
 
               MaterialButton(
                 color: Colors.blue,
-                onPressed: () {
+                onPressed: () async {
                   if (formKey.currentState != null) {
                     formKey.currentState!.save();
 
@@ -170,8 +172,16 @@ class _FormScreenState extends State<FormScreen> {
 
                     /// Push replacement:
                     // Navigator.pushReplacement(context,
-                    //     MaterialPageRoute(builder: (c) => DashboardScreen()));
+                    // //     MaterialPageRoute(builder: (c) => DashboardScreen()));
 
+                    // final pref = await SharedPreferences.getInstance();
+
+                    // pref.setBool("isLoggedIn", true);
+
+                    // pref.getBool("isLogedIn");
+                    // pref.remove("isLogedIn");
+
+                    await SharedPref.setHasUserLoggedIn(true);
                     Navigator.pushReplacementNamed(
                       context,
                       Routes.dashboard,
