@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/post.dart';
@@ -13,6 +14,10 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  bool isLoading = false;
+  bool hasErrorOccurred = false;
+  String errorMessage = '';
+
   @override
   void initState() {
     super.initState();
@@ -32,6 +37,10 @@ class _HomepageState extends State<Homepage> {
     print("server url is $serverLocation");
 // GET
     print("1. fetching value from server");
+
+    isLoading = true;
+    setState(() {});
+
     var response = http.get(uri);
     response.then((res) {
       print(res.statusCode);
@@ -50,9 +59,15 @@ class _HomepageState extends State<Homepage> {
       // }).toList();
 
       print("body text is-----------:$bodyText");
+      isLoading = false;
       setState(() {});
     });
     response.catchError((e) {
+      isLoading = false;
+      hasErrorOccurred = true;
+      errorMessage = e.toString();
+
+      setState(() {});
       print(e);
     });
 
@@ -63,6 +78,20 @@ class _HomepageState extends State<Homepage> {
       print(e);
     }
     print("2:");
+  }
+
+  postSomethingToServer() async {
+    final uri = Uri.parse("https://jsonplaceholder.typicode.com/posts");
+
+    final response = await http.post(uri, body: {
+      "email": "email",
+      "password": "password"
+    }, headers: {
+      "accpet": "application/json",
+    });
+
+    print(response.statusCode);
+    print(response.body);
   }
 
   /// status cod:
@@ -81,38 +110,58 @@ class _HomepageState extends State<Homepage> {
   ///  502: bad gateway
   /// 503:internal server error
 
+  Widget buildList() {
+    return ListView.builder(
+        itemCount: posts.length,
+        itemBuilder: (context, index) {
+          final Post _post = posts[index];
+
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "${index + 1}. " + _post.title,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  SizedBox(height: 10),
+                  Text(_post.body),
+                  // Divider()
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  Widget buildBody() {
+    if (isLoading) {
+      return CircularProgressIndicator();
+    }
+
+    if (hasErrorOccurred) {
+      return Text(errorMessage);
+    }
+    return buildList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: ListView.builder(
-              itemCount: posts.length,
-              itemBuilder: (context, index) {
-                final Post _post = posts[index];
-
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${index + 1}. " + _post.title,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        SizedBox(height: 10),
-                        Text(_post.body),
-                        // Divider()
-                      ],
-                    ),
-                  ),
-                );
-              })),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        postSomethingToServer();
+      }),
+      body: Center(child: buildBody()),
     );
   }
 }
+
+
+/// CircularProgressIndicator 
+/// LinearProgresssIndicator
