@@ -1,4 +1,5 @@
 import 'package:first_app/screen/stful/form_screen.dart';
+import 'package:first_app/screen/stful/sql_note_app.dart';
 import 'package:flutter/material.dart';
 
 import 'navigation/custom_route_generator.dart';
@@ -17,7 +18,8 @@ class OurApp extends StatelessWidget {
       title: "Our app",
       theme: ThemeData(primarySwatch: Colors.purple),
       // home: FormScreen(pageTitle: "Not login"),
-      initialRoute: Routes.splash,
+      home: SqlNoteScreen(),
+      //  Routes.splash,
       onGenerateRoute: ourRouteGenerator,
     );
   }
