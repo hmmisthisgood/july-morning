@@ -1,5 +1,5 @@
 import 'package:first_app/screen/stful/form_screen.dart';
-import 'package:first_app/screen/stful/sql_note_app.dart';
+import 'package:first_app/screen/stful/note/sql_note_app.dart';
 import 'package:flutter/material.dart';
 
 import 'navigation/custom_route_generator.dart';
