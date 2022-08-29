@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "711390813900",
+    "project_id": "july-bw",
+    "storage_bucket": "july-bw.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711390813900:android:151e6a6c64b029211a6c69",
+        "android_client_info": {
+          "package_name": "com.example.first_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711390813900-osthtd2e0o6leagq9m2mhqq8te0cj4bb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASjf-Qx5ZMNlMvAOO1k1Z_OT2TBmPuBuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711390813900-osthtd2e0o6leagq9m2mhqq8te0cj4bb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
