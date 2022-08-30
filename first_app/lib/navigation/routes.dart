@@ -10,6 +10,7 @@ class Routes {
   static const counter = "/counter";
   static const dashboard = "/dashboard";
   static const login = "/login";
+  static const signup = "/signup";
   static const tabview = "/tabview";
   static const homepage = "/homepage";
   static const splash = "/splashScreen";

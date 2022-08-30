@@ -1,4 +1,4 @@
-import 'package:first_app/screen/stful/form_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:first_app/screen/stful/note/sql_note_app.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +6,10 @@ import 'navigation/custom_route_generator.dart';
 import 'navigation/routes.dart';
 
 /// only one in a flutter project
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(OurApp()); // starts running our app
 }
 
@@ -18,8 +21,7 @@ class OurApp extends StatelessWidget {
       title: "Our app",
       theme: ThemeData(primarySwatch: Colors.purple),
       // home: FormScreen(pageTitle: "Not login"),
-      home: SqlNoteScreen(),
-      //  Routes.splash,
+      initialRoute: Routes.splash,
       onGenerateRoute: ourRouteGenerator,
     );
   }

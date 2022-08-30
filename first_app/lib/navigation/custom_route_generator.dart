@@ -1,4 +1,5 @@
 import 'package:first_app/navigation/routes.dart';
+import 'package:first_app/screen/auth/login_screen.dart';
 import 'package:first_app/screen/basics_widgets/followers_screen.dart';
 import 'package:first_app/screen/basics_widgets/grid_view_screen.dart';
 import 'package:first_app/screen/basics_widgets/homepage.dart';
@@ -14,6 +15,8 @@ import 'package:first_app/screen/basics_widgets/pageview_screen.dart';
 import 'package:first_app/screen/basics_widgets/row_column.dart';
 import 'package:first_app/screen/basics_widgets/stack_screen.dart';
 import 'package:first_app/screen/basics_widgets/tik_tok_page_skeleton.dart';
+
+import '../screen/auth/signup_screen.dart';
 
 Route ourRouteGenerator(RouteSettings settings) {
   switch (settings.name) {
@@ -51,10 +54,9 @@ Route ourRouteGenerator(RouteSettings settings) {
               ));
 
     case Routes.login:
-      return MaterialPageRoute(
-          builder: (_) => FormScreen(
-                pageTitle: "Not login",
-              ));
+      return MaterialPageRoute(builder: (_) => LoginScreen(pageTitle: ""));
+    case Routes.signup:
+      return MaterialPageRoute(builder: (_) => SignupScreen(pageTitle: ""));
 
     case Routes.tabview:
       return MaterialPageRoute(builder: (_) => TabScreen());
