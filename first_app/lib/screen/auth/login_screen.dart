@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_app/screen/stful/bottom_nav_screen.dart';
 import 'package:first_app/util/shared_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -40,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       print(credential.toString());
       Fluttertoast.showToast(msg: "Login Successful!!!!");
+
       await SharedPref.setHasUserLoggedIn(true);
       navigate();
     } on FirebaseAuthException catch (e) {

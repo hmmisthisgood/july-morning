@@ -1,11 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_app/screen/stful/bottom_nav_screen.dart';
-import 'package:first_app/util/shared_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
-import '../../navigation/routes.dart';
 import '../../widget/common_textfield.dart';
 
 class SignupScreen extends StatefulWidget {
