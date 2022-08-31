@@ -14,7 +14,7 @@ dependencies:
   animated_bottom_navigation_bar: ^1.0.1
   form_field_validator: ^1.1.0
   fluttertoast: ^8.0.9
-  
+
   # networking
   http:
   dio:
@@ -26,15 +26,12 @@ dependencies:
   shared_preferences: ^2.0.15
   sqflite: ^2.0.3+1
 
-
-  ## firebase and login 
+  ## firebase and login
   firebase_core: ^1.21.1
   firebase_auth: ^3.7.0
-  
+
   google_sign_in: ^5.4.1
   flutter_facebook_auth: ^4.4.1
-
-  
 
 dev_dependencies:
   flutter_test:
@@ -44,9 +41,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/icons/
 
   # fonts:
   #   - family: Schyler
