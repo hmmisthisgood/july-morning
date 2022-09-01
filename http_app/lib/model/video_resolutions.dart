@@ -15,7 +15,7 @@ class VideoResolutions {
       large: VideoSize.convertFromJson(json['large']),
       medium: VideoSize.convertFromJson(json['medium']),
       small: VideoSize.convertFromJson(json['small']),
-      tiny: VideoSize.convertFromJson(json['tiny']),
+      tiny: VideoSize.convertFromJson(json['tinnnnny'] ?? {}),
     );
   }
 }

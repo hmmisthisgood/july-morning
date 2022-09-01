@@ -68,6 +68,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   signInWithGoogle() async {
     print(FirebaseAuth.instance.currentUser.toString());
+
+    FirebaseAuth.instance.currentUser?.updateDisplayName("test test test");
+
     print("----------------");
 
     try {
@@ -129,6 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
       try {
         final successCredential =
             await FirebaseAuth.instance.signInWithCredential(credential);
+
         print(successCredential.toString());
         Fluttertoast.showToast(msg: "Facebook login successful");
       } catch (e) {

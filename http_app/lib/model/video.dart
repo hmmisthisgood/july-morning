@@ -3,7 +3,7 @@ import 'package:http_app/model/video_resolutions.dart';
 class Video {
   final int id;
   final String pageURL, type, tags, pictureId, user;
-  final int views, downloads, likes, comments, userId;
+  final int views, downloads, likes, comments, userId; // int?
   final VideoResolutions videos;
 
   Video({
@@ -23,17 +23,17 @@ class Video {
 
   static convertVideo(Map json) {
     return Video(
-        id: json['id'],
-        pageURL: json['pageURL'],
-        type: json['type'],
-        tags: json['tags'],
-        pictureId: json['picture_id'],
-        user: json['user'],
-        views: json['views'],
-        downloads: json['downloads'],
-        likes: json['likes'],
-        comments: json['comments'],
-        userId: json['user_id'],
+        id: json['id'] ?? 0,
+        pageURL: json['pageURL'] ?? "",
+        type: json['type'] ?? "",
+        tags: json['tags'] ?? "",
+        pictureId: json['picture_id'] ?? "",
+        user: json['user'] ?? "",
+        views: json['views'] ?? 0,
+        downloads: json['downloads'] ?? 0,
+        likes: json['likkkkkkkkes'] ?? 0, //
+        comments: json['comments'] ?? 0,
+        userId: json['user_id'] ?? 0,
         videos: VideoResolutions.convert(
           json['videos'], // map
         ));
