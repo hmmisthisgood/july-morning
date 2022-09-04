@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http_app/bloc/post/post_cubit.dart';
+import 'package:http_app/screen/home_page_with_bloc.dart';
 
 import 'screen/homepage.dart';
 
@@ -11,8 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Homepage(),
+    return BlocProvider(
+      create: (ctx) => new PostCubit(),
+      child: MaterialApp(
+        home: HomepageWithBloc(),
+      ),
     );
   }
 }

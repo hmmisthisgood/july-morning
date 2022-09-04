@@ -5,6 +5,7 @@ import 'package:flutter/semantics.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/post.dart';
+import '../widget/posts_list_widget.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -110,36 +111,6 @@ class _HomepageState extends State<Homepage> {
   ///  502: bad gateway
   /// 503:internal server error
 
-  Widget buildList() {
-    return ListView.builder(
-        itemCount: posts.length,
-        itemBuilder: (context, index) {
-          final Post _post = posts[index];
-
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "${index + 1}. " + _post.title,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  SizedBox(height: 10),
-                  Text(_post.body),
-                  // Divider()
-                ],
-              ),
-            ),
-          );
-        });
-  }
-
   Widget buildBody() {
     if (isLoading) {
       return CircularProgressIndicator();
@@ -148,7 +119,9 @@ class _HomepageState extends State<Homepage> {
     if (hasErrorOccurred) {
       return Text(errorMessage);
     }
-    return buildList();
+    return PostListWidget(
+      posts: posts,
+    );
   }
 
   @override
