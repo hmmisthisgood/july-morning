@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:http/http.dart';
 import 'package:http_app/bloc/post/post_state.dart';
 
 import '../bloc/post/post_cubit.dart';
-import '../model/post.dart';
 import '../widget/posts_list_widget.dart';
 
 class HomepageWithBloc extends StatefulWidget {
@@ -83,4 +81,4 @@ class _HomepageWithBlocState extends State<HomepageWithBloc> {
 /// 2. BlocListener =listens for bloc/cubit's states aand can perofm some side effect actions
 /// 3. BlocConsumer (Combo of builder and listener)
 
-/// 4. BlocProvider: Very important widget
+/// 4. BlocProvider: Very important widget : distributes the bloc

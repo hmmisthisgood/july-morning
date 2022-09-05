@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_app/screen/bloc_screens/posts_screen_with_bloc.dart';
 import 'package:first_app/util/shared_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -25,11 +26,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   navigate() async {
-    Navigator.pushReplacementNamed(
-      context,
-      Routes.dashboard,
-      arguments: {"username": "thisIsRamey", "seconArg": "some other stuff"},
-    );
+    // Navigator.pushReplacementNamed(
+    //   context,
+    //   Routes.dashboard,
+    //   arguments: {"username": "thisIsRamey", "seconArg": "some other stuff"},
+    // );
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => PostScreenWithBloc()));
   }
 
   loginWithFirebase() async {

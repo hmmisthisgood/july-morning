@@ -3,6 +3,7 @@ import 'package:first_app/util/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 import '../../navigation/routes.dart';
+import '../bloc_screens/posts_screen_with_bloc.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -31,9 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       }
 
       Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (_) => DashboardScreen(username: "username")));
+          context, MaterialPageRoute(builder: (_) => PostScreenWithBloc()));
     });
   }
 
