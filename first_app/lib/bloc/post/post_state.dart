@@ -1,6 +1,9 @@
 import '../../model/post.dart';
 
-abstract class PostState {}
+abstract class PostState {
+  final List<Post> data;
+  const PostState({this.data = const []});
+}
 
 // innit state
 
@@ -24,7 +27,7 @@ class PostError extends PostState {
 class PostFetchSuccess extends PostState {
   final List<Post> data;
 
-  PostFetchSuccess({required this.data});
+  PostFetchSuccess({required this.data}) : super(data: data);
 }
 
 /// loading more data state
@@ -32,7 +35,7 @@ class PostFetchSuccess extends PostState {
 class PostLoadingMore extends PostState {
   final List<Post> data;
 
-  PostLoadingMore({required this.data});
+  PostLoadingMore({required this.data}) : super(data: data);
 }
 
 /// loading more error
@@ -40,7 +43,8 @@ class PostLoadingMoreError extends PostState {
   final List<Post> data;
   final String errorMessage;
 
-  PostLoadingMoreError({required this.data, required this.errorMessage});
+  PostLoadingMoreError({required this.data, required this.errorMessage})
+      : super(data: data);
 }
 
 /// loading more success

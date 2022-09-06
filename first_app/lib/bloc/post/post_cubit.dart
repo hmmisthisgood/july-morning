@@ -10,6 +10,8 @@ class PostCubit extends Cubit<PostState> {
   Dio _dio = Dio();
 
   int total = 0;
+  int currentPage = 1;
+  List<Post> allPosts = [];
 
   fetchPosts() async {
     final url = "https://pixabay.com/api";
@@ -31,6 +33,7 @@ class PostCubit extends Cubit<PostState> {
       final List hits = body['hits'];
 
       final List<Post> posts = hits.map((e) => Post.fromJson(e)).toList();
+      allPosts.addAll(posts);
 
       emit(PostFetchSuccess(data: posts));
     } catch (e) {
@@ -39,7 +42,36 @@ class PostCubit extends Cubit<PostState> {
     }
   }
 
-  loadMorePosts() {}
+  loadMorePosts() async {
+    final url = "https://pixabay.com/api";
+
+    currentPage++;
+
+    try {
+      emit(PostLoadingMore(data: allPosts));
+      final response = await _dio.get(url, queryParameters: {
+        "key": Str.apiKey,
+        "page": currentPage, // 2
+        "per_page": 5,
+        "q": "car"
+      });
+      print(response.statusCode);
+
+      /// in Dio you do not need to user json.decode on response
+      final body = response.data; // same as response.body in http pacakge
+
+      total = body['total'];
+      final List hits = body['hits'];
+
+      final List<Post> temp = hits.map((e) => Post.fromJson(e)).toList();
+      allPosts.addAll(temp);
+
+      emit(PostFetchSuccess(data: allPosts));
+    } catch (e) {
+      print(e);
+      emit(PostError(errorMessage: e.toString()));
+    }
+  }
 
   refreshPosts() {}
 }
