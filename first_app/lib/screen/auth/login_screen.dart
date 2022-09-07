@@ -1,21 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_app/bloc/auth/auth_cubit.dart';
 import 'package:first_app/bloc/auth/auth_state.dart';
 import 'package:first_app/screen/bloc_screens/posts_screen_with_bloc.dart';
-import 'package:first_app/util/shared_pref.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:form_field_validator/form_field_validator.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:form_field_validator/form_field_validator.dart';
+
 import '../../navigation/routes.dart';
 import '../../widget/common_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key, this.pageTitle = "login"}) : super(key: key);
+  const LoginScreen({Key? key, this.pageTitle = "login", this.randomValue})
+      : super(key: key);
   final String pageTitle;
-
+  final randomValue;
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -34,7 +31,11 @@ class _LoginScreenState extends State<LoginScreen> {
     //   arguments: {"username": "thisIsRamey", "seconArg": "some other stuff"},
     // );
     Navigator.push(
-        context, MaterialPageRoute(builder: (_) => PostScreenWithBloc()));
+        context,
+        MaterialPageRoute(
+            builder: (_) => PostScreenWithBloc(
+                  randomValue: widget.randomValue,
+                )));
   }
 
   void login() async {

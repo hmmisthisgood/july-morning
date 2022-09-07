@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:first_app/bloc/post/post_state.dart';
+import 'package:first_app/repository/post_repository.dart';
 import 'package:first_app/util/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,11 +14,16 @@ class PostCubit extends Cubit<PostState> {
   int currentPage = 1;
   List<Post> allPosts = [];
 
+  // PostRepository repository;
+
   fetchPosts() async {
     final url = "https://pixabay.com/api";
 
+    // repository.fetchSomeData();
+
     try {
-      emit(PostLoading(loadingMessage: ""));
+      emit(PostLoading(loadingMessage: "Loading..."));
+
       final response = await _dio.get(url, queryParameters: {
         "key": Str.apiKey,
         "page": 1,
@@ -34,6 +40,8 @@ class PostCubit extends Cubit<PostState> {
 
       final List<Post> posts = hits.map((e) => Post.fromJson(e)).toList();
       allPosts.addAll(posts);
+
+      // emit(PostLoading(loadingMessage: "Fetching data"));
 
       emit(PostFetchSuccess(data: posts));
     } catch (e) {

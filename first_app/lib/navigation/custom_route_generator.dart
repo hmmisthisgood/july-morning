@@ -54,7 +54,11 @@ Route ourRouteGenerator(RouteSettings settings) {
               ));
 
     case Routes.login:
-      return MaterialPageRoute(builder: (_) => LoginScreen(pageTitle: ""));
+      return MaterialPageRoute(
+          builder: (_) => LoginScreen(
+                pageTitle: "",
+                randomValue: "",
+              ));
     case Routes.signup:
       return MaterialPageRoute(builder: (_) => SignupScreen(pageTitle: ""));
 

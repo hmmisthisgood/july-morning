@@ -1,14 +1,14 @@
 import 'package:first_app/bloc/post/post_cubit.dart';
 import 'package:first_app/bloc/post/post_state.dart';
+import 'package:first_app/util/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../widget/ig_post_with_post_model.dart';
 
 class PostScreenWithBloc extends StatefulWidget {
-  const PostScreenWithBloc({Key? key}) : super(key: key);
-
+  const PostScreenWithBloc({Key? key, this.randomValue}) : super(key: key);
+  final randomValue;
   @override
   State<PostScreenWithBloc> createState() => _PostScreenWithBlocState();
 }
@@ -19,7 +19,6 @@ class _PostScreenWithBlocState extends State<PostScreenWithBloc> {
   @override
   void initState() {
     super.initState();
-
     controller.addListener(listener);
   }
 
@@ -43,13 +42,24 @@ class _PostScreenWithBlocState extends State<PostScreenWithBloc> {
 
   @override
   Widget build(BuildContext context) {
+    final apiKey = Env.of(context).apiKey;
+    print('api key from inherited widget is: $apiKey');
     return Scaffold(
       body: Center(
         child: BlocBuilder<PostCubit, PostState>(builder: (context, state) {
           // initial or loading
 
+          // print(state);
+
           if (state is PostInitial || state is PostLoading) {
-            return CircularProgressIndicator();
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 10),
+                if (state is PostLoading) Text(state.loadingMessage)
+              ],
+            );
           }
 
           /// error
@@ -68,7 +78,10 @@ class _PostScreenWithBlocState extends State<PostScreenWithBloc> {
                       itemBuilder: (context, index) {
                         final post = state.data[index];
 
-                        return IgPostWithModel(postData: post);
+                        return IgPostWithModel(
+                          postData: post,
+                          randomValue: widget.randomValue,
+                        );
                       }),
                 ),
                 if (state is PostLoadingMore) CircularProgressIndicator()

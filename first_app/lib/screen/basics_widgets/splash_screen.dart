@@ -32,7 +32,11 @@ class _SplashScreenState extends State<SplashScreen> {
       }
 
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => PostScreenWithBloc()));
+          context,
+          MaterialPageRoute(
+              builder: (_) => PostScreenWithBloc(
+                    randomValue: "",
+                  )));
     });
   }
 

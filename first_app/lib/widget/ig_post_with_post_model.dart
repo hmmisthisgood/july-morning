@@ -7,8 +7,8 @@ import '../model/post.dart';
 
 class IgPostWithModel extends StatelessWidget {
   final Post postData;
-
-  IgPostWithModel({required this.postData});
+  final randomValue;
+  IgPostWithModel({required this.postData, this.randomValue = ""});
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +59,7 @@ class IgPostWithModel extends StatelessWidget {
               );
             },
           ),
+          // Text(randomValue)
           // Image.network(
           //   postData.largeImageUrl,
           //   height: 200,
@@ -71,3 +72,8 @@ class IgPostWithModel extends StatelessWidget {
     );
   }
 }
+/// route generator 
+/// Login Screen ::: Register
+/// Post SCreen with bloc
+/// Ig Post widget
+/// Text::: Value fetch
