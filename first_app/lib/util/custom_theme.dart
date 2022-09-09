@@ -11,6 +11,7 @@ class CustomTheme {
     scaffoldBackgroundColor: lightBgColor,
     iconTheme: IconThemeData(color: Colors.black),
     dividerColor: Colors.black,
+    fontFamily: "Rubik",
     textTheme: TextTheme(
       bodyText2: TextStyle(color: lightTextColor, fontSize: 10),
       bodyText1: TextStyle(color: lightTextColor, fontSize: 12),
@@ -26,6 +27,7 @@ class CustomTheme {
     scaffoldBackgroundColor: darkBgColor,
     iconTheme: IconThemeData(color: Colors.white),
     dividerColor: Colors.white,
+    fontFamily: "Rubik",
     textTheme: TextTheme(
       bodyText2: TextStyle(color: darkTextColor, fontSize: 10),
       bodyText1: TextStyle(color: darkTextColor, fontSize: 12),

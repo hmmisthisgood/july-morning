@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../model/post.dart';
 
@@ -33,11 +34,13 @@ class IgPostWithModel extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 15),
-                    Text(
-                      postData.user,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
+                    Text(postData.user,
+                        style: GoogleFonts.notoSans(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            fontSize: 20,
+                          ),
+                        )),
                   ],
                 ),
                 Icon(Icons.menu_sharp)
