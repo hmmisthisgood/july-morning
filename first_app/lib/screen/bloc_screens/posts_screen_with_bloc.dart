@@ -1,5 +1,7 @@
 import 'package:first_app/bloc/post/post_cubit.dart';
 import 'package:first_app/bloc/post/post_state.dart';
+import 'package:first_app/bloc/theme/theme_cubit.dart';
+import 'package:first_app/util/custom_theme.dart';
 import 'package:first_app/util/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +46,26 @@ class _PostScreenWithBlocState extends State<PostScreenWithBloc> {
   Widget build(BuildContext context) {
     final apiKey = Env.of(context).apiKey;
     print('api key from inherited widget is: $apiKey');
+
+    final theme = Theme.of(context);
+    final isDarkMode = CustomTheme.isDarkTheme(theme.scaffoldBackgroundColor);
+
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                bool isDarkTheme =
+                    CustomTheme.isDarkTheme(theme.scaffoldBackgroundColor);
+                context.read<ThemeCubit>().toogleTheme(isDarkTheme);
+              },
+              icon: Icon(
+                isDarkMode ? Icons.dark_mode : Icons.dark_mode_outlined,
+                color: Colors.white,
+                size: 35,
+              )),
+        ],
+      ),
       body: Center(
         child: BlocBuilder<PostCubit, PostState>(builder: (context, state) {
           // initial or loading
