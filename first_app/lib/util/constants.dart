@@ -1,5 +1,5 @@
 const String imageSrc =
-    "https://cdn.pixabay.com/photo/2022/06/27/08/37/monk-7287041_960_720.jpg";
+    "https://cdn.pixabay.com/photo/2022/08/18/14/28/chefchaouen-7395031_1280.jpg";
 
 class Str {
   static const String apiKey = "24747090-95c20607d87e00f7bea20cb40";

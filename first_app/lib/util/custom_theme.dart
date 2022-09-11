@@ -20,7 +20,8 @@ class CustomTheme {
       headline4: TextStyle(color: lightTextColor, fontSize: 18),
       headline3: TextStyle(color: lightTextColor, fontSize: 20),
       headline2: TextStyle(color: lightTextColor, fontSize: 22),
-      headline1: TextStyle(color: lightTextColor, fontSize: 24),
+      headline1: TextStyle(
+          color: lightTextColor, fontSize: 24, fontWeight: FontWeight.bold),
     ),
   );
   static final ThemeData darkTheme = ThemeData(
@@ -36,7 +37,8 @@ class CustomTheme {
       headline4: TextStyle(color: darkTextColor, fontSize: 18),
       headline3: TextStyle(color: darkTextColor, fontSize: 20),
       headline2: TextStyle(color: darkTextColor, fontSize: 22),
-      headline1: TextStyle(color: darkTextColor, fontSize: 24),
+      headline1: TextStyle(
+          color: darkTextColor, fontSize: 24, fontWeight: FontWeight.bold),
     ),
   );
 
