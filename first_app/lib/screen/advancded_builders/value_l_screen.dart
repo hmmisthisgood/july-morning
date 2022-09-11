@@ -32,7 +32,7 @@ class ValListenScreen extends StatelessWidget {
                         Text(
                           'You have pressed this button',
                           style: txt.headline1!
-                              .copyWith(fontSize: 24, color: Colors.white),
+                              .copyWith(fontSize: 24, color: Colors.black),
                         ),
                         Text(
                           cc.toString(),

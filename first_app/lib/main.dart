@@ -3,8 +3,10 @@ import 'package:first_app/bloc/auth/auth_cubit.dart';
 import 'package:first_app/bloc/post/post_cubit.dart';
 import 'package:first_app/bloc/theme/theme_cubit.dart';
 import 'package:first_app/repository/post_repository.dart';
+import 'package:first_app/screen/advancded_builders/future_b_screen.dart';
+import 'package:first_app/screen/advancded_builders/stream_b_screen.dart';
 import 'package:first_app/screen/stful/note/sql_note_app.dart';
-import 'package:first_app/screen/stful/value_l_screen.dart';
+import 'package:first_app/screen/advancded_builders/value_l_screen.dart';
 import 'package:first_app/util/custom_theme.dart';
 import 'package:first_app/util/env.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +45,7 @@ class OurApp extends StatelessWidget {
               theme: CustomTheme.lightTheme,
               darkTheme: CustomTheme.darkTheme,
               themeMode: state,
-              home: ValListenScreen(),
+              home: FutureBScreen(),
               // initialRoute: Routes.splash,
               onGenerateRoute: ourRouteGenerator,
             );
