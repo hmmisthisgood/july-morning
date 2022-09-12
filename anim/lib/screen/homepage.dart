@@ -2,12 +2,15 @@ import 'package:anim/screen/hero1.dart';
 import 'package:anim/screen/lottie_animation.dart';
 import 'package:flutter/material.dart';
 
+import 'animated_container_screen.dart';
+
 class Homepage extends StatelessWidget {
   Homepage({Key? key}) : super(key: key);
 
   List screens = [
     {"title": "Hero animation", "widget": Hero1()},
     {"title": "Lottie animation", "widget": LottieScreen()},
+    {"title": "Animated Container", "widget": AnimContainerScreen()},
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,6 +44,8 @@ class Homepage extends StatelessWidget {
 /// Widgets: 
 /// 1. Hero animation
 /// 2. Lottie animation
+
+
 /// 3. AnimatedContainer
 /// 4. AnimatedIcon
 /// 5. AnimatedBuilder
