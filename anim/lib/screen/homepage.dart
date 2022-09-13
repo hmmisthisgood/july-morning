@@ -1,7 +1,10 @@
+import 'package:anim/screen/falling_screen.dart';
 import 'package:anim/screen/hero1.dart';
 import 'package:anim/screen/lottie_animation.dart';
+import 'package:anim/screen/transform_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'animated_builder_screen.dart';
 import 'animated_container_screen.dart';
 
 class Homepage extends StatelessWidget {
@@ -11,6 +14,9 @@ class Homepage extends StatelessWidget {
     {"title": "Hero animation", "widget": Hero1()},
     {"title": "Lottie animation", "widget": LottieScreen()},
     {"title": "Animated Container", "widget": AnimContainerScreen()},
+    {"title": "Transform widget", "widget": TransformScreen()},
+    {"title": "Animated builder", "widget": AnimBuilderScreen()},
+    {"title": "Falling screen", "widget": FallingScreen()},
   ];
   @override
   Widget build(BuildContext context) {
