@@ -6,6 +6,7 @@ class FallingWidget extends StatefulWidget {
   const FallingWidget(
       {Key? key,
       this.duration = const Duration(seconds: 2),
+      this.repeat = true,
       this.offset = const Offset(300, 300),
       this.rotatingText = "abc",
       this.containerColor = Colors.black})
@@ -14,6 +15,7 @@ class FallingWidget extends StatefulWidget {
   final Offset offset;
   final String rotatingText;
   final Color containerColor;
+  final bool repeat;
   @override
   State<FallingWidget> createState() => _AnimBuilderScreenState();
 }
@@ -31,7 +33,8 @@ class _AnimBuilderScreenState extends State<FallingWidget>
       reverseDuration: Duration(seconds: 5),
     );
     animationController.forward();
-    animationController.repeat();
+
+    if (widget.repeat) animationController.repeat();
 
     animationController.addListener(() {
       bool isCompleted = animationController.isCompleted;
@@ -50,13 +53,15 @@ class _AnimBuilderScreenState extends State<FallingWidget>
     animationController.dispose();
   }
 
+  // dx,dy
+
   Widget buildCirlce(value) {
     return InkWell(
       onTap: () {
         animationController.reverse();
       },
       child: Transform.translate(
-        offset: widget.offset,
+        offset: Offset(value * widget.offset.dx, value * widget.offset.dy),
         child: Container(
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
@@ -80,25 +85,15 @@ class _AnimBuilderScreenState extends State<FallingWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        child: AnimatedBuilder(
-          animation: animationController,
-          builder: (context, child) {
-            final value = animationController.value;
+    return AnimatedBuilder(
+      animation: animationController,
+      builder: (context, child) {
+        final value = animationController.value;
 
-            /// 0.0>value<1.0
-            ///
-            return Row(
-              children: [
-                buildCirlce(value),
-                buildCirlce(value),
-              ],
-            );
-          },
-        ),
-      ),
+        /// 0.0>value<1.0
+        ///
+        return buildCirlce(value);
+      },
     );
   }
 }

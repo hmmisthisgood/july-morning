@@ -1,3 +1,4 @@
+import 'package:anim/page_transition/vertical_transitions.dart';
 import 'package:anim/screen/falling_screen.dart';
 import 'package:anim/screen/hero1.dart';
 import 'package:anim/screen/lottie_animation.dart';
@@ -28,8 +29,9 @@ class Homepage extends StatelessWidget {
             final page = screens[index];
             return MaterialButton(
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => page['widget']));
+                // Navigator.push(
+                //     context, MaterialPageRoute(builder: (_) => page['widget']));
+                Navigator.push(context, scaleRoute(page['widget']));
               },
               color: Colors.green,
               child: Text(
