@@ -1,4 +1,6 @@
 import 'package:anim/page_transition/vertical_transitions.dart';
+import 'package:anim/screen/custom_clipper_screen.dart';
+import 'package:anim/screen/custom_painter_screen.dart';
 import 'package:anim/screen/falling_screen.dart';
 import 'package:anim/screen/hero1.dart';
 import 'package:anim/screen/lottie_animation.dart';
@@ -18,6 +20,8 @@ class Homepage extends StatelessWidget {
     {"title": "Transform widget", "widget": TransformScreen()},
     {"title": "Animated builder", "widget": AnimBuilderScreen()},
     {"title": "Falling screen", "widget": FallingScreen()},
+    {"title": "Custom Painter builder", "widget": CPainterSCreen()},
+    {"title": "Custom Clipper screen", "widget": CClipperSCreen()},
   ];
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class Homepage extends StatelessWidget {
               onPressed: () {
                 // Navigator.push(
                 //     context, MaterialPageRoute(builder: (_) => page['widget']));
-                Navigator.push(context, scaleRoute(page['widget']));
+                Navigator.push(context, BottomToUp(page['widget']));
               },
               color: Colors.green,
               child: Text(

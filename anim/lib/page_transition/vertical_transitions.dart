@@ -36,21 +36,6 @@ class BottomToUp extends PageRoute {
 
     final rightToLeftTween = Tween(begin: Offset(1, 0), end: Offset(0, 0));
     final leftToRightTween = Tween(begin: Offset(-1, 0), end: Offset(0, 0));
-
-    final fadeTween = Tween(begin: 0.0, end: 1.0);
-
-    final scaleTween = Tween(begin: 0.0, end: 1.0);
-
-    // return ScaleTransition(
-    //   scale: animation.drive(scaleTween),
-    //   child: ClipRRect(
-    //     borderRadius: animation.value == 1
-    //         ? BorderRadius.circular(0)
-    //         : BorderRadius.circular(1000),
-    //     child: targetChild,
-    //   ),
-    // );
-
     return SlideTransition(
       position:
           animation.drive(leftToRightTween), // (0,1), (0,0.999), ... (0,0)
