@@ -2,19 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:first_app/bloc/auth/auth_cubit.dart';
 import 'package:first_app/bloc/post/post_cubit.dart';
 import 'package:first_app/bloc/theme/theme_cubit.dart';
-import 'package:first_app/repository/post_repository.dart';
-import 'package:first_app/screen/advancded_builders/future_b_screen.dart';
-import 'package:first_app/screen/advancded_builders/stream_b_screen.dart';
 import 'package:first_app/screen/basics_widgets/splash_screen.dart';
-import 'package:first_app/screen/stful/note/sql_note_app.dart';
-import 'package:first_app/screen/advancded_builders/value_l_screen.dart';
 import 'package:first_app/util/custom_theme.dart';
 import 'package:first_app/util/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'navigation/custom_route_generator.dart';
-import 'navigation/routes.dart';
 
 /// only one in a flutter project
 void main() async {

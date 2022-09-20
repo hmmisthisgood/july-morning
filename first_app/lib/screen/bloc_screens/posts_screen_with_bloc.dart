@@ -5,6 +5,7 @@ import 'package:first_app/util/custom_theme.dart';
 import 'package:first_app/util/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../widget/ig_post_with_post_model.dart';
 
@@ -39,6 +40,16 @@ class _PostScreenWithBlocState extends State<PostScreenWithBloc> {
 
     if (position.pixels <= position.minScrollExtent && position.atEdge) {
       print("I am at top");
+    }
+  }
+
+  askPermission() async {
+    final bool isLocationPermissionGranted =
+        await Permission.location.isGranted;
+
+    if (isLocationPermissionGranted == false) {
+      final status = await Permission.location.request();
+      print(status);
     }
   }
 
@@ -99,9 +110,14 @@ class _PostScreenWithBlocState extends State<PostScreenWithBloc> {
                       itemBuilder: (context, index) {
                         final post = state.data[index];
 
-                        return IgPostWithModel(
-                          postData: post,
-                          randomValue: widget.randomValue,
+                        return InkWell(
+                          onTap: () {
+                            askPermission();
+                          },
+                          child: IgPostWithModel(
+                            postData: post,
+                            randomValue: widget.randomValue,
+                          ),
                         );
                       }),
                 ),
