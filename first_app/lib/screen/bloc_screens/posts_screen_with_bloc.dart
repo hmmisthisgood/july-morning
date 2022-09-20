@@ -5,6 +5,7 @@ import 'package:first_app/util/custom_theme.dart';
 import 'package:first_app/util/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../widget/ig_post_with_post_model.dart';
@@ -51,6 +52,11 @@ class _PostScreenWithBlocState extends State<PostScreenWithBloc> {
       final status = await Permission.location.request();
       print(status);
     }
+  }
+
+  pickImage() async {
+    final imagePicker = ImagePicker();
+    final image = await imagePicker.pickImage(source: ImageSource.gallery);
   }
 
   @override
@@ -113,6 +119,7 @@ class _PostScreenWithBlocState extends State<PostScreenWithBloc> {
                         return InkWell(
                           onTap: () {
                             askPermission();
+                            pickImage();
                           },
                           child: IgPostWithModel(
                             postData: post,
