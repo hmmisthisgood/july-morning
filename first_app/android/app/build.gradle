@@ -22,8 +22,10 @@ if (flutterVersionName == null) {
 }
 
 
-def keystoreProperties = new Properties() 
+def keystoreProperties = new Properties()  // map
+
 def keystorePropertiesFile = rootProject.file('key.properties')
+
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
@@ -57,6 +59,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
 
